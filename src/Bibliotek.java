@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bibliotek {
+
     public static void main(String[] args) {
+
+        //flödesschema i draw.io
 
         Scanner scan = new Scanner(System.in);
 
