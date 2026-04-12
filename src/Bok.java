@@ -8,8 +8,8 @@ public class Bok {
         this.år = år;
         this.forfattare = forfattare;
     }
-
-    public void visaInfo() {
-        System.out.println(titel + " - " + forfattare + " (" + år + ")");
+    @Override
+   public String toString() {
+        return titel + " - " + forfattare + " (" + år + ")";
     }
 }

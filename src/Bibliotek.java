@@ -8,11 +8,14 @@ public class Bibliotek {
 
         // Skapa en lista med böcker
         ArrayList<Bok> lista = new ArrayList<>();
+        Filhanterare.readFile(lista);
 
-        // Lägg till tre böcker
-        lista.add(new Bok("Java Basics", 2020, "Anders"));
-        lista.add(new Bok("Programming 1", 2019, "Maria"));
-        lista.add(new Bok("Coding Guide", 2022, "Ali"));
+        // Om filen är tom läggr den till standrardböcker
+        if(lista.isEmpty()) { //om inga böcker finns i listan, gör det som står i blocket
+            lista.add(new Bok("Spanska 3", 2022, "Francisco Cabrera"));
+            lista.add(new Bok("Grundläggande hemkunskap", 2019, "Maria Andersson Gibrand"));
+            lista.add(new Bok("Andra världskriget", 2024, "Kristoffer Pennegård"));
+        }
 
         System.out.println("\nVälkommen till biblioteket. Vill du:");
 
@@ -25,8 +28,7 @@ public class Bibliotek {
             if (val == 1) {
                 System.out.println("\nBöcker i biblioteket:");
                 for (int i = 0; i < lista.size(); i++) {
-                    System.out.print((i + 1) + ". ");
-                    lista.get(i).visaInfo();
+                    System.out.println((i + 1) + ". " + lista.get(i));
                 }
             } else if (val == 2) {
                 System.out.println("Skriv titel:");
@@ -46,7 +48,8 @@ public class Bibliotek {
                 lista.remove(index - 1); //ta bort en bok från listan
                 System.out.println("Boken är borttagen!");
             } else if (val == 4) {
-                System.out.println("Programmet avslutas.");
+                Filhanterare.saveFile(lista);
+                System.out.println("Programmet sparar och avslutas.");
                 break;
             } else {
                 System.out.println("Fel val, försök igen.");

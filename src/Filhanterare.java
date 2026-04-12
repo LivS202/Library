@@ -8,18 +8,25 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
   public class Filhanterare {
 
     public static void readFile(ArrayList<Bok>lista) {
+        lista.clear();
+
         try {
             File file = new File("books.txt");
             Scanner filScanner = new Scanner(file);
 
          while (filScanner.hasNextLine()) {
             String titel = filScanner.nextLine();
-            int år = filScanner.nextInt();
-            filScanner.nextLine();
+
+            if (!filScanner.hasNextLine()) break; //undviker krasch, finns inte fler rader (t ex bara 2 ist för 3) avslutas loopen direkt
+            String årRad = filScanner.nextLine();
+
+            if (!filScanner.hasNextLine()) break; //undviker krasch, finns inte fler rader (t ex bara 2 ist för 3) avslutas loopen direkt
             String forfattare = filScanner.nextLine();
 
-            Bok b = new Bok(titel, år, forfattare);
-            lista.add(b);
+            int år = Integer.parseInt(årRad); //omvandlar text till heltal
+
+            lista.add(new Bok(titel, år, forfattare));
+
         }
          filScanner.close();
 
@@ -31,17 +38,23 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
        public static void saveFile(ArrayList<Bok>lista) {
 
         try {
-            FileWriter writer = new FileWriter("src/books.txt");
+            File file = new File("books.txt");
+
+            if (!file.exists()){
+                file.createNewFile();
+            }
+
+            FileWriter writer = new FileWriter(file);
 
             for (Bok b : lista) {
                 writer.write(b.titel + "\n");
                 writer.write(b.år + "\n");
                 writer.write(b.forfattare + "\n");
             }
-
             writer.close();
+
         } catch (IOException e) {
-            System.out.println("Fel vid sparning ");
+            System.out.println("Fel vid sparningen ");
         }
     }
 }

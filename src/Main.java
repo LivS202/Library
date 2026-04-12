@@ -26,7 +26,7 @@ public class Main {
                 System.out.println("\nBöcker i biblioteket:");
                 for (int i = 0; i < lista.size(); i++) {
                     System.out.print((i + 1) + ". ");
-                    lista.get(i).visaInfo();
+                    lista.get(i).toString();
                 }
             } else if (val == 2) {
                 System.out.println("Skriv titel:");
