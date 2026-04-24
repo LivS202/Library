@@ -38,13 +38,13 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
        public static void saveFile(ArrayList<Bok>lista) {
 
         try {
-            File file = new File("books.txt");
+            File file = new File("src/books.txt");
 
             if (!file.exists()){
                 file.createNewFile();
             }
 
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter("src/books.txt");
 
             for (Bok b : lista) {
                 writer.write(b.titel + "\n");
