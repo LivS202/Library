@@ -8,8 +8,9 @@ public class Bok {
         this.år = år;
         this.forfattare = forfattare;
     }
-    @Override
-   public String toString() {
+
+    @Override //skriver över en metod som redan finns i Java
+   public String toString() { //gör koden läsbar, du själv bestämmer hur objektet ska skrivas
         return titel + " - " + forfattare + " (" + år + ")";
     }
 }

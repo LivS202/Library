@@ -11,7 +11,7 @@ public class Bibliotek {
         Filhanterare.readFile(lista);
 
         // Om filen är tom läggr den till standrardböcker
-        if(lista.isEmpty()) { //om inga böcker finns i listan, gör det som står i blocket
+        if (lista.isEmpty()) { //om inga böcker finns i listan, gör det som
             lista.add(new Bok("Spanska 3", 2022, "Francisco Cabrera"));
             lista.add(new Bok("Grundläggande hemkunskap", 2019, "Maria Andersson Gibrand"));
             lista.add(new Bok("Andra världskriget", 2024, "Kristoffer Pennegård"));
