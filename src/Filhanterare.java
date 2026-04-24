@@ -8,13 +8,13 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
   public class Filhanterare {
 
     public static void readFile(ArrayList<Bok>lista) {
-        lista.clear();
+        lista.clear(); //hindrar att samma böcker läggs till 2 gånger (skapar dubletter)
 
         try {
             File file = new File("books.txt");
             Scanner filScanner = new Scanner(file);
 
-         while (filScanner.hasNextLine()) {
+         while (filScanner.hasNextLine()) { //loopar och undviker krasch, finns inte fler rader (t ex bara 2 ist för 3) avslutas loopen direkt
             String titel = filScanner.nextLine();
 
             if (!filScanner.hasNextLine()) break; //undviker krasch, finns inte fler rader (t ex bara 2 ist för 3) avslutas loopen direkt
@@ -25,9 +25,10 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
 
             int år = Integer.parseInt(årRad); //omvandlar text till heltal
 
+            //skapar objekt av klassen Bok, konstruktorn i Bok klassen skickar värden till klassen, lägger objektet i lista
             lista.add(new Bok(titel, år, forfattare));
-
         }
+
          filScanner.close();
 
     }catch (FileNotFoundException e) {
@@ -40,8 +41,8 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
         try {
             File file = new File("books.txt");
 
-            if (!file.exists()){
-                file.createNewFile();
+            if (!file.exists()){ //kollar om filen redan finns
+                file.createNewFile(); //skapar ny tom fil på datorn
             }
 
             FileWriter writer = new FileWriter(file);
@@ -53,7 +54,8 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
             }
             writer.close();
 
-        } catch (IOException e) {
+        //om något går fel med in eller utmatning fångas felet och hanteras här
+        } catch (IOException e) { //typ av fel (input/output)
             System.out.println("Fel vid sparningen ");
         }
     }
