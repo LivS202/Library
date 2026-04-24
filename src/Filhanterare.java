@@ -11,7 +11,7 @@ import java.io.FileNotFoundException; //ger felmeddelande ifall filen inte finns
         lista.clear(); //hindrar att samma böcker läggs till 2 gånger (skapar dubletter)
 
         try {
-            File file = new File("books.txt");
+            File file = new File("src/books.txt");
             Scanner filScanner = new Scanner(file);
 
          while (filScanner.hasNextLine()) { //loopar och undviker krasch, finns inte fler rader (t ex bara 2 ist för 3) avslutas loopen direkt
