@@ -23,6 +23,7 @@ public class BibliotekData {
 
     public void laggTillBok (String titel, int år, String författare){
         lista.add(new Bok(titel, år, författare));
+        Filhanterare.saveFile(lista);
     }
     public void taBortBok (int index){
         if (index >= 0 && index < lista.size()){
